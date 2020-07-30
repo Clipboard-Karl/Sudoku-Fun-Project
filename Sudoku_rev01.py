@@ -60,7 +60,8 @@ while point_x < 9:
 #            print(sudoku_9x9_in[point_y,point_x])
 #        break
             point_y += 1
-            point_x == 0
+            point_x = 0
+            print("End of solve:  Y=",point_y," X=",point_x)
     else:
         print(point," was found")
     point_x += 1
@@ -69,6 +70,8 @@ while point_x < 9:
         point_y += 1
         if point_y == 9:
             break
+    print("While end:  Y=",point_y," X=",point_x)
+
 
 
 #row_list = remove_0_from_row

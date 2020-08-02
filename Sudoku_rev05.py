@@ -151,16 +151,9 @@ while True:
             continue   #forces restart of loop
         else:
             column_values = zeros_removed
-        #    existing_values = column_values + row_values
             existing_values = np.concatenate((column_values,row_values))
             existing_dups_removed = np.unique(existing_values)
-            #print("Column : ",column_values)
-            #print("Row :    ",row_values)
-            #print("Column and Row : ",existing_values)
-            print("Column and Row : ",existing_dups_removed)
-
-
-
+    #        print("Column and Row : ",existing_dups_removed)
             if len(existing_dups_removed) == 8:
                 insert_answer(point_y,point_x)
                 solved_count += 1
@@ -173,12 +166,6 @@ while True:
                 continue   #forces restart of loop
             else:
                 row_values = zeros_removed
-
-
-
-
-
-
 
 #        print("Multiple zeros in row and column check 3x3")
         zeros_removed = check_3x3(point_y,point_x)
@@ -197,7 +184,40 @@ while True:
                     break
             continue   #forces restart of loop
         else:
+            values_3x3 = zeros_removed
+            all_existing = np.concatenate((values_3x3,existing_dups_removed))
+            all_uniques = np.unique(all_existing)
+            print("Y=",point_y," X=",point_x,"  All existing = ",all_uniques)
+
+
+            if len(all_uniques) == 8:
+                insert_answer(point_y,point_x)
+                solved_count += 1
+            #    point_y += 1
+                point_x += 1
+                if point_x == 9:
+                    point_y += 1
+                    point_x = 0
+                    not_solved = 0
+                    if point_y == 9:
+                        print("3x3 break hit")
+                        break
+            #                print("Y=",point_y," X",point_x," Reset the loop")
+                continue   #forces restart of loop
+
+
+
+
+
             not_solved += 1
+
+
+
+
+
+
+
+
 
 #            point_y += 1
 #            point_x = 0

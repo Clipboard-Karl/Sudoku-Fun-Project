@@ -1,5 +1,8 @@
-# Sudoku_rev05.py - Sudoku Problem solver
+# Sudoku_rev06.py - Sudoku Problem solver
 #
+#  20200802 - Rev6 - total rebuild.  There is a logic error in finding the
+#               number to solve for.  The code is getting messy so taking
+#               what I know and cleaning up and stream lining.
 #  20200801 - Rev04 is working but can't solve the entire problem.
 #               moving to Rev05
 #  20200731 - Checking for the last 0 (missing number) in a 3x3 grid.  More
@@ -52,7 +55,7 @@ def missing_number(zeros_removed):
         else:
 #            print(missing, "is the missing number")
 #            x = missing
-            return missing
+            return missing'=
 
 def insert_answer(point_y,point_x):
 #    print("Single Zero Found:  Y=",point_y," X=",point_x)
@@ -111,12 +114,44 @@ sudoku_9x9_in=sudoku_9x9_in.astype('int32')
 point_x = 0
 point_y = 0
 solved_count = 0
-not_solved = 0
+not_solved_count = 0
 solved_hold = 0
 
 while True:
     point = sudoku_9x9_in[point_y,point_x]
-#    print("Y=",point_y," X",point_x," value = ",point)
+    print("Y=",point_y," X",point_x," value = ",point)
+    if point == 0:
+        print("Zero Found")
+    else:
+        print("Not a zero")
+
+
+    point_x += 1
+    if point_x == 9:
+        point_x = 0
+        point_y += 1
+#        print("Y=",point_y," X",point_x," this should end")
+        if point_y == 9:
+            print("Loop end break hit. Solved = ",solved_count)
+            if solved_hold == solved_count:
+                break
+            if not_solved_count > 0:
+                point_y = 0
+                solved_hold = solved_count
+                not_solved = 0
+                continue
+            else:
+                break
+        continue
+
+
+
+
+
+
+
+
+"""
     if  point == 0:
 #        print("zero Found - Location:  Y=",point_y," X=",point_x)
         zeros_removed = check_row(point_y)
@@ -241,9 +276,9 @@ while True:
                 break
         continue
 #    print("Y=",point_y," X=",point_x," at While end")
-
+"""
 
 print("The Final Answer:")
 print("Solved for : ",solved_count)
-print("Still not solved : ",not_solved)
+print("Still not solved : ",not_solved_count)
 print(sudoku_9x9_in)

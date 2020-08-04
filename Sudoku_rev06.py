@@ -1,5 +1,6 @@
 # Sudoku_rev06.py - Sudoku Problem solver
 #
+#  20200803 - Dug into numpy to count numbers in array - still working on code
 #  20200802 - Rev6 - total rebuild.  There is a logic error in finding the
 #               number to solve for.  The code is getting messy so taking
 #               what I know and cleaning up and stream lining.
@@ -26,6 +27,8 @@ import os
 import pandas
 #  To work with arrays
 import numpy as np
+
+import collections, numpy
 #-------------------------------------------------------------------------------
 def check_row(row_y):
     get_row = sudoku_9x9_in[row_y]
@@ -55,7 +58,7 @@ def missing_number(zeros_removed):
         else:
 #            print(missing, "is the missing number")
 #            x = missing
-            return missing'=
+            return missing
 
 def insert_answer(point_y,point_x):
 #    print("Single Zero Found:  Y=",point_y," X=",point_x)
@@ -277,8 +280,10 @@ while True:
         continue
 #    print("Y=",point_y," X=",point_x," at While end")
 """
+for i in range (0, 10):
+    print("count ",i," = ",np.count_nonzero(sudoku_9x9_in == i))
 
-print("The Final Answer:")
+print("The Fin)al Answer:")
 print("Solved for : ",solved_count)
 print("Still not solved : ",not_solved_count)
 print(sudoku_9x9_in)

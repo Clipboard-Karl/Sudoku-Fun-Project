@@ -1,6 +1,9 @@
 # Sudoku_rev07.py - Sudoku Problem solver
 #
-#  20200808 - Cleaning up code.... I am getting close
+#  20200810 - Starting Rev08 - This logic is working but limited it is not
+#               forward thinking enough to select the proper solution if
+#               more than one exists.
+#  20200808 - Cleaning up code.... I am getting close i hope
 #  20200805 - Working on the new idea of solving based on the highist existing
 #               number on the board.
 #               Started rev07.  Rev06 is working for a single number
@@ -116,10 +119,10 @@ while True:
         if point_x == 9:
             print("unexpected end stop with X=9")
             break
-        #------------------
 
+        #--------------------------------------------------------------------
         # --- This is the column loop looking for a possible solve column
-
+        #--------------------------------------------------------------------
         while True:
             get_column = sudoku_9x9_in[:,point_x]
             #print("Column X = ",point_x," - ",get_column)
@@ -167,6 +170,9 @@ while True:
                         break
                     break
 
+        #-------------------------------------------------
+        # End of the Column while Loop
+        #-------------------------------------------------
         #  this next line will need to move
         #point_y += 1
 

@@ -1,5 +1,6 @@
 # Sudoku_rev08.py - Sudoku Problem solver
 #
+#  20200812 - Built one line of the solve array - saving and moving to rev09
 #  20200810 - Starting Rev08 - The logic is not "forward thinking" enough to
 #               select the correc answer in all cases.  Switching from solving
 #               as while stpping through the puzzle I will read the puzzle
@@ -58,8 +59,9 @@ sudoku_9x9_in=np.genfromtxt("9x9_in.csv", delimiter=',')
 sudoku_9x9_in=sudoku_9x9_in.astype('int32')
 
 z = 0
-point_x = 3
-point_y = 1
+
+point_y = 2
+point_x = 4
 zero_hold = 0
 solve_number = number_count()
 print("Solve for = ",solve_number)

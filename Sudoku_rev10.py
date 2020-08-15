@@ -81,7 +81,8 @@ def solve_array_line(point_y,point_x):
     for i in range (1, 10):
         #print("i = ",i)
         if i in unique_numbers:
-            z += 1
+            #   z += 1
+            solve_numbers = numpy.append(solve_numbers,0)
         else:
             solve_numbers = numpy.append(solve_numbers,i)
             #print("Solve Numbers = ",solve_numbers)
@@ -100,7 +101,8 @@ def solve_array_line(point_y,point_x):
     possible_array = numpy.append(possible_array,non_zero_solve_numbers)
     #print(possible_array)
     #return(possible_array)
-    return(non_zero_solve_numbers)
+    #return(non_zero_solve_numbers)
+    return(solve_numbers)
 
 #-------------------------------------------------------------------------------
 #  Read input file and store in a 9x9 numpy array
@@ -109,7 +111,7 @@ sudoku_9x9_in=sudoku_9x9_in.astype('int32')
 
 z = 0
 
-point_y_in = 0
+point_y_in = 4
 point_x_in = 2
 
 
@@ -120,10 +122,15 @@ print("Solve for = ",solve_number)
 check_cell = sudoku_9x9_in[point_y_in,point_x_in]
 print("Check Cell = ",check_cell)
 if check_cell == 0:
+
+######  Check Row
     point_x = 0
     while True:
-        line = solve_array_line(point_y_in,point_x)
-        print("Array solve line:",point_y_in,",",point_x,"=",line)
+    #    if point_x != point_x_in:
+        check_cell = sudoku_9x9_in[point_y_in,point_x]
+        if check_cell == 0:
+            line = solve_array_line(point_y_in,point_x)
+            print("Array solve line:",point_y_in,",",point_x,"=",line)
         point_x += 1
         if point_x == 9:
             break
